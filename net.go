@@ -1,4 +1,4 @@
-package virtualbox
+t:ackage virtualbox
 
 import (
 	"fmt"
@@ -76,12 +76,9 @@ func (vb *VBox) InternalNetInfo() ([]Network, error) {
 		switch key {
 		case "Name":
 			nw.Name = val
-		default:
-			if !ok && strings.TrimSpace(val) == "" {
-				nw.Mode = NWMode_intnet
-				nws = append(nws, nw)
-				nw = Network{}
-			}
+			nw.Mode = NWMode_intnet
+			nws = append(nws, nw)
+			nw = Network{}
 		}
 		return nil
 	})
