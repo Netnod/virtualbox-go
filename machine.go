@@ -238,6 +238,8 @@ func (vb *VBox) VMInfo(uuidOrVmName string) (machine *VirtualMachine, err error)
 			continue
 		}
 
+		nic.Index = i
+
 		n = fmt.Sprintf("nictype%d", i)
 		if v, ok := m[n]; ok {
 			nic.Type = NICType(v.(string))
