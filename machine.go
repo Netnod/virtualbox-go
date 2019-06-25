@@ -271,6 +271,11 @@ func (vb *VBox) VMInfo(uuidOrVmName string) (machine *VirtualMachine, err error)
 			if v, ok := m[n]; ok {
 				nic.NetworkName = v.(string)
 			}
+		case NWMode_intnet:
+			n = fmt.Sprintf("intnet%d", i)
+			if v, ok := m[n]; ok {
+				nic.NetworkName = v.(string)
+			}
 		}
 
 		vm.Spec.NICs = append(vm.Spec.NICs, nic)
